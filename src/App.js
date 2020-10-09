@@ -1,6 +1,7 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import Search from './components/Search';
-import axios from 'axios';
+import Results from './components/Results';
 
 require('dotenv').config();
 
@@ -16,8 +17,11 @@ function App() {
   const searchAPI = (e) => {
     if (e.key === 'Enter') {
       axios(APIKEY + '&s=' + state.search).then((data) => {
-        let searchResult = data.data.Search;
-        console.log(searchResult);
+        let results = data.data.Search;
+
+        setState((prevState) => {
+          return { ...prevState, results: results };
+        });
       });
     }
   };
@@ -37,6 +41,7 @@ function App() {
       </header>
       <main>
         <Search getUserInput={getUserInput} searchAPI={searchAPI} />
+        <Results results={state.results} />
       </main>
     </div>
   );
