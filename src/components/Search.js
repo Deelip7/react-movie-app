@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Search = () => {
+const Search = ({ getUserInput }) => {
   return (
     <article className='searchField-container'>
-      <input type='text' name='searchmovies' placeholder='Search for Movies' className='searchmovies'></input>
+      <input type='text' name='searchmovies' placeholder='Search for Movies' className='searchmovies' onChange={getUserInput}></input>
     </article>
   );
 };
