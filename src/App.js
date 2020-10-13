@@ -30,7 +30,6 @@ function App() {
   const getUserInput = (e) => {
     let searchTerm = e.target.value;
     setState((prevState) => {
-      console.log(prevState);
       return { ...prevState, search: searchTerm };
     });
   };
